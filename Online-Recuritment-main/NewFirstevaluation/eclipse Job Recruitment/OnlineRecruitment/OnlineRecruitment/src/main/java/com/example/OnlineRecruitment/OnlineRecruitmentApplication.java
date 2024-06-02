@@ -8,9 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
 import com.example.OnlineRecruitment.Entities.Generators.CustomIdGenerator;
-
 import jakarta.persistence.EntityManager;
 
 
