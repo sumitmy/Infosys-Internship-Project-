@@ -1,0 +1,115 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" *ngIf="studentId?.startsWith('GRAD')" routerLink="/gradhome/{{studentId}}" routerLinkActive="active">Home</a>
+      
+          </li>
+
+         
+         
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link"  *ngIf="!studentId?.startsWith('GRAD')"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!(studentId?.startsWith('GRAD'))" routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+      <a class="nav-link" *ngIf="(studentId?.startsWith('GRAD'))"  routerLink="/home" >Logout</a>
+    </div>
+  </nav>
+</div>
+
+
+<section class="job-div">
+  <div class="container-fluid py-2">
+    <div class="row">
+      <div class="col-md-8">
+        <div id="formcard" class="card ">
+          <div class="card-body">
+            <h1 class="card-title fw-bold">{{companyDescriptionData?.companyName}}</h1>
+            <h1 class="display-4">&emsp; {{jobDescriptionData?.jobId}} - {{jobDescriptionData?.jobType}}</h1>
+            <h6 class="display-6 fw-bold">Job Description</h6>
+            <div>{{jobDescriptionData?.jobDescription}}</div>
+            <p class="fw-bolder d-inline">Job Vacancy: {{jobDescriptionData?.jobVacancy}}</p>
+            <p class="fw-bolder">Salary: {{jobDescriptionData?.jobSalary}}</p>
+            <h2 class="display-4 fw-bold">Company Details</h2>
+            <div class="display-6 fw-semibold">Company Description</div>
+            <div>{{companyDescriptionData?.companyDescription}}</div>
+            <div class="display-6 fw-semibold">Company Address</div>
+            <address>{{companyDescriptionData?.companyAddress}}</address>
+            <p class="fw-bolder d-inline">Company Type: {{companyDescriptionData?.companyType}}</p>
+            <p class="fw-bolder">Company size: {{companyDescriptionData?.companySize}}</p>
+            <button class="btn btn-primary" (click)="Apply()">Apply</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div id="sidebar" class="card " style="color:rgb(18, 26, 99);">
+          <div class="card-body">
+            <h1 class="h2 fw-bold mb-4">Sponsors</h1>
+            <ul class="list-unstyled">
+              <li>HCL Technology - Over 6,000+ Premium Jobs</li>
+              <hr>
+              <li>Infosys - Premium Jobs</li>
+              <hr>
+              <li>Wipro - Premium Jobs</li>
+              <hr>
+              <li>Accenture - Premium Jobs</li>
+              <hr>
+              <li>Atos - Premium Jobs</li>
+              <hr>
+              <li>TCS - Premium Jobs</li>
+              <hr>
+            </ul>
+            <h1 class="h2 fw-bold mb-4">Wise Words</h1>
+            <p class="mb-0">"Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it."</p>
+            <p class="text-end">-Steve Jobs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+package com.example.OnlineRecruitment.Services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.OnlineRecruitment.Entities.Graduate;
+import com.example.OnlineRecruitment.Entities.Job;
+import com.example.OnlineRecruitment.Repositories.GraduateRepository;
+import com.example.OnlineRecruitment.Repositories.JobRepository;
+
+@Service
+public class GraduateService {
+	
+	@Autowired
+	GraduateRepository graduateRepository;
+	
+	@Autowired
+	JobRepository jobRepository;
+	
+	public void saveGraduate(Graduate graduate) {
+		graduateRepository.save(graduate);
+	}
+	
+	public Graduate getGraduateById(String roleId) {
+		
+		return graduateRepository.getByRoleId(roleId);
+	}
+	
+	public List<Graduate> getAllGraduate(){
+		return graduateRepository.findAll();
+	}
+	
+	
+	
+	public boolean checkGraduateExist(String roleId) {
+		Graduate graduate = graduateRepository.getByRoleId(roleId);
+		
+		if(graduate==null) {
+			System.out.println("this is false ");
+			return false;
+		}
+		else {
+			System.out.println(graduate.toString());
+			System.out.println("this is the check graduate"+true);
+			return true;
+		}
+	}
+
+	public void addJobToGraduate(List<Job> job, String roleId) {
+		// TODO Auto-generated method stub
+		Graduate graduate = graduateRepository.getByRoleId(roleId);
+		graduate.setJobs(job);
+		
+	}
+
+}

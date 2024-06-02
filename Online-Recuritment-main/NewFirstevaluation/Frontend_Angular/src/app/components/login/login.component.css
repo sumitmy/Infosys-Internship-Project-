@@ -1,0 +1,48 @@
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+
+.input-outline{
+  border: 1px solid #050e17; /* Change the color as needed */
+  border-radius: 0.25rem;
+
+}
+
+
+
+#drop{
+    width: 100px;
+  
+}
+
+#roleId{
+    width: 230px;
+   
+}
+
+
+.log-div{
+  background-color: rgb(146, 171, 198);
+}
+
+.navbar {
+  background: linear-gradient(to right, #6a1b9a, #00b4d9);
+  color: white;
+}
+
+.navbar-brand, .nav-link {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #ddd;
+}
+
+.nav-link.active {
+  color: #ffffff; /* Bright white color */
+  font-weight: bold; /* Bold text */
+}

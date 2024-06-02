@@ -1,0 +1,90 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <!--  -->
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <img src="assets/ors-logo.png" alt="logo" style="height: 55px; width:190px; margin-right: 10px;">
+      
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+          </li>
+
+          <a class="nav-link"  (click)="post()" routerLinkActive="active">Post Jobs</a>
+          
+          <a class="nav-link"  (click)="postappoint()" routerLinkActive="active">Appointments</a>
+
+
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" (click)=jobsforyou() routerLinkActive="active">Jobs for you</a>
+          </li>
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+
+
+          <li class="nav-item" >
+            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/login"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')" routerLink="/admin-login" routerLinkActive="active">Admin</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+    </div>
+  </nav>
+</div>
+
+
+<div class="container">
+  <div class="background"></div>
+  <div class="content">
+    <h1 class="animated-text">Elevate Your Career Journey</h1>
+    <h4 class="animated-text">Our platform connects talented individuals with exciting job openings, empowering you to take the next step towards professional success.</h4>
+    <h3 class="animated-text">Join us now!</h3>
+
+
+
+  </div>
+</div>

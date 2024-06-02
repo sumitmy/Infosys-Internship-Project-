@@ -1,0 +1,167 @@
+
+
+<!--
+<section class="top-div">
+  <div class="container py-5" >
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-weight: bolder;">Post your Job here !! </h3>
+            <form [formGroup]="jobRegisterForm" (ngSubmit)="onSubmit()" novalidate >
+
+            <div class="form-outline mb-3">
+              <label for="jobName" class="col-form-label">Job Name:</label>
+                              <div id="inputfield">
+                                  <input type="text" class="form-control" id="jobName" formControlName="jobName" placeholder="Enter Job Name">
+
+                                  <div *ngIf="isInvalid('jobName')" class="text-danger">
+                                    {{ getErrorMessage('jobName') }}
+                                  </div>
+
+                              </div>
+            </div>
+
+
+            <div class="form-outline mb-3">
+              <label for="jobSalary" class="col-form-label">Salary</label>
+              <div id="inputfield">
+                <input type="number" class="form-control" id="jobSalary" formControlName="jobSalary" placeholder="Enter the Salary">
+                <div *ngIf="isInvalid('jobSalary')" class="text-danger">
+                  {{ getErrorMessage('jobSalary') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-3">
+              <label for="jobType" class="col-form-label">Job Type</label>
+              <div id="inputfield">
+                <select id="jobType" formControlName="jobType" class="form-select" placeholder="Select the Type" required>
+                  <option value="Software Developer">Software Developer</option>
+                  <option value="Java Developer">Java Developer</option>
+                  <option value="AI Engineer">AI Engineer</option>
+                  <option value="ML Engineer">ML Engineer</option>
+                  <option value="Data Scientist">Data Scientist</option>
+                  <option value="Data Analyst">Data Analyst</option>
+                </select>
+                <div *ngIf="isInvalid('jobType')" class="text-danger">
+                  {{ getErrorMessage('jobType') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-3">
+              <label for="jobDescription" class="col-form-label">Job Description:</label>
+              <div id="inputfield">
+                <textarea rows="5" class="form-control" id="jobDescription" formControlName="jobDescription" placeholder="Job Description"></textarea>
+                <div *ngIf="isInvalid('jobDescription')" class="text-danger">
+                  {{ getErrorMessage('jobDescription') }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-outline mb-3">
+              <label for="jobVacancy" class="col-form-label">Job Vacancy:</label>
+              <div id="inputfield">
+                <input type="number" class="form-control" id="jobVacancy" formControlName="jobVacancy" placeholder="Vacancy">
+                <div *ngIf="isInvalid('jobVacancy')" class="text-danger">
+                  {{ getErrorMessage('jobVacancy') }}
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn" style="background-color : #113f5f; color : white;">Post Job</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section> -->
+
+
+
+
+<section class="background vh-100">
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 offset-md-2"> <!-- Adjusted column size and added offset -->
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-weight: bolder;">Post your Job here !!</h3>
+            <form [formGroup]="jobRegisterForm" (ngSubmit)="onSubmit()" novalidate>
+              <!-- Job Name -->
+              <div class="form-outline mb-3">
+                <label for="jobName" class="col-form-label" style="font-weight: 600;">Job Name:</label>
+                <div id="inputfield">
+                  <input type="text" class="form-control input-outline" id="jobName" formControlName="jobName" placeholder="Enter Job Name">
+                  <div *ngIf="isInvalid('jobName')" class="text-danger">
+                    {{ getErrorMessage('jobName') }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Job Salary  -->
+              <div class="form-outline mb-3">
+                <label for="jobSalary" class="col-form-label" style="font-weight: 600;">Salary</label>
+                <div id="inputfield">
+                  <input type="number" class="form-control input-outline" id="jobSalary" formControlName="jobSalary" placeholder="Enter the Salary">
+                  <div *ngIf="isInvalid('jobSalary')" class="text-danger">
+                    {{ getErrorMessage('jobSalary') }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Job Type -->
+              <div class="form-outline mb-3">
+                <label for="jobType" class="col-form-label" style="font-weight: 600;"> Job Type</label>
+                <div id="inputfield">
+                  <select id="jobType" formControlName="jobType" class="form-select input-outline" placeholder="Select the Type" required>
+                    <option  value="" disabled selected>Select Job Type</option>
+                    <option value="Software Developer">Software Developer</option>
+                    <option value="Java Developer">Java Developer</option>
+                    <option value="AI Engineer">AI Engineer</option>
+                    <option value="ML Engineer">ML Engineer</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                  </select>
+                  <div *ngIf="isInvalid('jobType')" class="text-danger">
+                    {{ getErrorMessage('jobType') }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Job Description -->
+              <div class="form-outline mb-3">
+                <label for="jobDescription" class="col-form-label" style="font-weight: 600;">Job Description:</label>
+                <div id="inputfield">
+                  <textarea rows="5" class="form-control input-outline" id="jobDescription" formControlName="jobDescription" placeholder="Job Description"></textarea>
+                  <div *ngIf="isInvalid('jobDescription')" class="text-danger">
+                    {{ getErrorMessage('jobDescription') }}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Vacancy -->
+              <div class="form-outline mb-3">
+                <label for="jobVacancy" class="col-form-label" style="font-weight: 600;">Job Vacancy:</label>
+                <div id="inputfield">
+                  <input type="number" class="form-control input-outline" id="jobVacancy" formControlName="jobVacancy" placeholder="Vacancy">
+                  <div *ngIf="isInvalid('jobVacancy')" class="text-danger">
+                    {{ getErrorMessage('jobVacancy') }}
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Post Job</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

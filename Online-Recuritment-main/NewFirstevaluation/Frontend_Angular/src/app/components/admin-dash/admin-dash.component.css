@@ -1,0 +1,83 @@
+
+
+.sidebar {
+  padding: 80 0 0;
+  width: 150px;  
+  border-radius: 0 30px 30px 0; 
+   
+}
+
+
+.bg-custom-color{
+  background-color: #113f5f;
+  border: 1px solid white;
+}
+
+
+
+.sidebar-heading{
+
+  margin-bottom: 60px;
+  padding : 25px;
+}
+/* px-3 mt-4 mb-1  */
+
+.sidebar-sticky {
+  padding-top: 10px;
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+.admin-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.main-content {
+  padding-left: 240px; 
+}
+
+.nav-link, .text-1{
+  color: rgb(250, 248, 248);
+  font-weight: bold;
+}
+
+.input-group-append {
+  position: relative;
+  top: 0.25rem;
+}
+
+.input-group-append.ml-auto {
+  margin-left: auto;
+}
+
+.input-group-append .btn {
+  align-items: stretch;
+  background-color:#113f5f;
+  color : white;
+  font-weight: bold;
+  height: 50px; 
+  margin: 0 10px 0; 
+}
+
+
+.input-group {
+  border-radius: 15px;
+}
+
+
+.nav-item.active a, .nav-item a:hover , .input-group-append .btn:hover, .input-group-append .btn.active  {
+  background-color: white;
+  color: #113f5f;
+  border-radius: 10px;
+  margin : 5px;
+}
+

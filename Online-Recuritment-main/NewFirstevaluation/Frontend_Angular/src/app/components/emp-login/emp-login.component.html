@@ -1,0 +1,73 @@
+<section class="vh-50"
+style="background-image: url('https://cdn.vectorstock.com/i/500p/73/98/dark-blue-gradient-abstract-background-vector-27317398.jpg'); background-size:1900px 1900px ; background-repeat: no-repeat;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px);">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+              alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+
+
+
+                <form [formGroup]="empLoginForm" (ngSubmit)="onSubmit()" novalidate>
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    <span class="h1 fw-bold mb-0">Online Recruitment System</span>
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login into your Employer account</h5>
+
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="email" class="col-sm-3 col-form-label">User ID</label>
+                    <div class="col-sm-9" id="inputfield">
+                        <input type="email" class="form-control form-select-lg" id="userID" formControlName="userID" placeholder="Enter Your userID">
+                        <div *ngIf="isInvalid('userID')" class="text-danger">
+                            {{ getErrorMessage('userID') }}
+                        </div>
+                    </div>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                    <div class="col-sm-9" id="inputfield">
+                        <input type="email" class="form-control form-select-lg" id="email" formControlName="email" placeholder="Email">
+                        <div *ngIf="isInvalid('email')" class="text-danger">
+                            {{ getErrorMessage('email') }}
+                        </div>
+                    </div>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label for="password" class="col-sm-3 col-form-label" >Password:</label>
+                    <div class="col-sm-9" id="inputfield">
+                        <input type="password" class="form-control form-select-lg" id="password" formControlName="password" placeholder="password">
+                        <div *ngIf="isInvalid('password')" class="text-danger">
+                            {{ getErrorMessage('password') }}
+                        </div>
+
+                    </div>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit" [disabled]="empLoginForm.invalid" routerLink="/home">Login</button>
+                  </div>
+
+                  <a class="large text-muted" routerLink="/forgotpassword">Forgot password?</a>
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a routerLink="/emp-register" style="color: #393f81;">Register here</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

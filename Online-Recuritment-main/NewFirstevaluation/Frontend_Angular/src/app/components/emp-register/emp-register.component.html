@@ -1,0 +1,150 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub </a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+
+
+
+
+
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <!-- <li class="nav-item" >
+            <a class="nav-link" routerLink="/gradhome" routerLinkActive="active">Jobs for you</a>
+          </li> -->
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+      <a class="nav-link" *ngIf="roleIdString?.startsWith('EMP')" routerLink="/home" >Logout</a>
+    </div>
+  </nav>
+</div>
+
+
+
+<section class="emp-div" style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); ">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
+          <div class="card-body p-4 p-lg-5 text-black">
+            <h2 class="h1 fw-bold mb-0" style="color: rgb(5, 15, 60);">Employer Details</h2>
+            <form [formGroup]="empRegisterForm" (ngSubmit)="onSubmit()" novalidate>
+              <!-- ROLE IN COMPANY -->
+              <!-- Drop-down can also be added  -->
+              <div class="form-outline mb-2">
+                <label for="roleInCompany" class="col-sm- col-form-label fw-bolder">Role:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="roleInCompany" formControlName="roleInCompany" placeholder="Enter Your Role In Your Company">
+                                    <div *ngIf="isInvalid('roleInCompany')" class="text-danger">
+                                        {{ getErrorMessage('roleInCompany') }}
+                                    </div>
+                                </div>
+              </div>
+
+
+               <!-- COMPANY NAME -->
+               <div class="form-outline mb-2">
+                <label for="companyName" class="col-sm- col-form-label fw-bolder">Company Name:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="companyName" formControlName="companyName" placeholder="Enter Company Name">
+                                    <div *ngIf="isInvalid('companyName')" class="text-danger">
+                                        {{ getErrorMessage('companyName') }}
+                                    </div>
+                                </div>
+              </div>
+
+
+              <!-- TYPE OF COMPANY -->
+              <div class="form-outline mb-2">
+                <label for="companyType" class="col-sm- col-form-label fw-bolder" >Company Type:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="companyType" formControlName="companyType" placeholder="Enter Company Type">
+                                    <div *ngIf="isInvalid('companyType')" class="text-danger">
+                                        {{ getErrorMessage('companyType') }}
+                                    </div>
+                                </div>
+              </div>
+
+              <!-- COMPANY DESCRIPTION -->
+              <div class="form-outline mb-2">
+                <label for="companyDescription" class="col-sm- col-form-label fw-bolder">Company Description:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                  <textarea rows="3" cols="33" class="form-control form-select-lg input-outline" id="companyDescription" formControlName="companyDescription" placeholder="Enter Company Description"></textarea>
+                                    <!-- <input type="textarea" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone Number"> -->
+                                    <div *ngIf="isInvalid('companyDescription')" class="text-danger">
+                                        {{ getErrorMessage('companyDescription') }}
+                                    </div>
+                                </div>
+              </div>
+
+              <!-- COMPANY ADDRESS -->
+              <div class="form-outline mb-2">
+                <label for="companyAddress" class="col-sm- col-form-label fw-bolder" >Company Address:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg input-outline" id="companyAddress" formControlName="companyAddress" placeholder="Enter Company Address">
+                                    <div *ngIf="isInvalid('companyAddress')" class="text-danger">
+                                        {{ getErrorMessage('companyAddress') }}
+                                    </div>
+
+                                </div>
+              </div>
+
+              <!-- COMPANY SIZE -->
+              <div class="form-outline mb-2">
+                <label for="companySize" class="col-sm-3 col-form-label fw-bolder">Company Size:</label>
+                <div class="col-sm-9" id="inputfield">
+                  <input type="number" class="form-control form-select-lg input-outline" id="companySize" formControlName="companySize" placeholder="Enter Company Size">
+                  <div *ngIf="isInvalid('companySize')" class="text-danger">
+                    {{ getErrorMessage('companySize') }}
+                </div>
+
+                </div>
+              </div>
+
+
+              <button type="submit" class="btn btn-primary mt-4" id="inputfield" [disabled]="!empRegisterForm.valid" >Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

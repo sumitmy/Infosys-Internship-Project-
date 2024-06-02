@@ -1,0 +1,20 @@
+package com.example.OnlineRecruitment.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.OnlineRecruitment.Entities.Appointment;
+import com.example.OnlineRecruitment.Repositories.AppointmentRepository;
+
+public class AppointmentService {
+	
+	@Autowired
+	private AppointmentRepository appointmentRepository;
+
+	public void saveAppointment(String applicantId, Appointment appointment) {
+		// TODO Auto-generated method stub
+		Appointment appoint = appointmentRepository.getById(applicantId);
+		appoint.setDate(appointment.getDate());
+		appoint.setLocation(appointment.getLocation());
+		appointmentRepository.save(appoint);
+	}
+}

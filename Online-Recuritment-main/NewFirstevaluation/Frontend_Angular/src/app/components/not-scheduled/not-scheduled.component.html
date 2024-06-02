@@ -1,0 +1,102 @@
+<div class="container mt-6 mb-4">
+  <h2>Not Scheduled</h2>
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by Applicant ID"
+      [(ngModel)]="searchTerm"
+      (change)="filterAppointments()"
+    />
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of appoints">
+          <td>{{ student.jobSeeker.fullName }}</td>
+          <td>{{ student.jobSeeker.email }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="Appointmentbutton(student)">Appoint</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<!-- Simple Modal -->
+<div class="modal" *ngIf="flag==true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Graduate Details</h5>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        <p class="col-3"><strong>Appointment ID:</strong> {{ selectedAppoint.applicantId }}</p>
+        <p class="col-3"><strong>Name :</strong> {{ selectedAppoint.jobSeeker.fullName }}</p>
+        <p class="col-3"><strong>Email :</strong> {{ selectedAppoint.jobSeeker.email }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Phone:</strong> {{ selectedAppoint.jobSeeker.phone }}</p>
+        <p class="col-3"><strong>YearOfPassing:</strong> {{ selectedAppoint.jobSeeker.yearOfPassing}}</p>
+        <p class="col-3"><strong>Cgpa:</strong> {{ selectedAppoint.jobSeeker.cgpa }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Language:</strong> {{ selectedAppoint.jobSeeker.language }}</p>
+        <p class="col-3"><strong>keySkill:</strong> {{ selectedAppoint.jobSeeker.keySkill }}</p>
+        <p class="col-3"><strong>AreaOfInterest:</strong> {{ selectedAppoint.jobSeeker.areaOfInterest }}</p>
+        </div>
+        <div class="row">
+        <p class="col-3"><strong>Project:</strong> {{ selectedAppoint.jobSeeker.project }}</p>
+        <p class="col-3"><strong>Applied For JobId:</strong> {{selectedAppoint.jobSeeker.job.jobId}}</p>
+        <p class="col-4"><strong>Applied For Job Name:</strong> {{selectedAppoint.jobSeeker.job.jobName}}</p>
+      </div>
+      <div class="row">
+        <div class="col-6">
+        <label for="location"><strong>Location:</strong></label>
+        <input type="text" id="location" class="form-control input-outline" [(ngModel)]="selectedAppoint.location" placeholder="Enter Location">
+        </div>
+        <div class="col-6">
+        <label for="Date"><strong>Date: </strong></label>
+        <input type="date" id="Date" class="form-control input-outline" [(ngModel)]="selectedAppoint.date" placeholder="Enter Time">
+      </div>
+      <div>
+        <button class="btn btn-link" (click)="openResume(selectedAppoint.applicantId)">View Resume</button>
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+      
+      <button type="button" class="btn btn-success" (click)="Appoint(selectedAppoint)">Appoint</button>
+      <button type="button" class="btn btn-dark" (click)="reject(selectedAppoint)">Reject</button>
+      <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" *ngIf="selectedforreject">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModalforreject()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="deleteappointbyId(selectedforreject.applicantId)" >Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

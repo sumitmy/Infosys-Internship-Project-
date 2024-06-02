@@ -1,0 +1,160 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+          </li>
+
+
+
+
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <!-- <li class="nav-item" >
+            <a class="nav-link" routerLink="/gradhome" routerLinkActive="active">Jobs for you</a>
+          </li> -->
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+
+<!-- email.component.html
+<div class="flex justify-content-center align-items-center h-full">
+  <form [formGroup]="emailForm" (ngSubmit)="onConfirmEmail()" class="w-50">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" readonly>
+    </div>
+    <div class="form-group">
+      <label>OTP</label>
+      <input type="text" formControlName="otp" class="form-control" maxlength="6">
+    </div>
+    <button type="submit" class="btn btn-primary">Verify OTP</button>
+    <button type="button" class="btn btn-secondary" (click)="onResendOtp()">Resend OTP</button>
+  </form>
+</div> -->
+
+
+<!-- <body id="back">
+
+  <div class="container py-5 h-50">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
+          <div class="card-body p-4 p-lg-5 text-black">
+            <h1 class="h1 fw-bold mb-0">Email Verification</h1>
+            <form [formGroup]="emailForm" (ngSubmit)="onConfirmEmail()" class="w-100 mt-2">
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                <div class="col-sm-9" id="inputfield">
+                    <input type="email" class="form-control form-select-lg" id="email" formControlName="email" placeholder="Email" >
+                    <div *ngIf="isInvalid('email')" class="text-danger">
+                        {{ getErrorMessage('email') }}
+                    </div>
+                </div>
+              </div>
+              <div data-mdb-input-init class="form-outline mb-4">
+                <label for="email" class="col-sm-3 col-form-label">OTP:</label>
+                <div class="col-sm-9" id="inputfield" >
+                <input type="text" formControlName="otp" placeholder="6-digit OTP" class="form-control form-select-lg" maxlength="6">
+                <div *ngIf="isInvalid('otp')" class="text-danger">
+                  {{ getErrorMessage('otp') }}
+              </div>
+            </div>
+              </div>
+              <button type="submit" class="btn btn-primary mx-1">Verify OTP</button>
+              <button type="button" class="btn btn-secondary" (click)="onResendOtp()">Resend OTP</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body> -->
+
+
+
+
+
+
+
+
+
+
+
+<section style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; width: 100%; backdrop-filter : blur(10px); ">
+  <div class="container" >
+    <div class="card"  style="background-color: #f0f0f0;">
+      <div class="card-body">
+        <h2 class="h2 fw-bold mb-0">Email Verification</h2>
+        <form [formGroup]="emailForm" (ngSubmit)="onConfirmEmail()" class="w-100 mt-2">
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label for="email" class="col-sm-3 col-form-label">Email:</label>
+            <div class="col-sm-9" id="inputfield">
+                <input type="email" class="form-control form-select-lg" id="email" formControlName="email" placeholder="Email" >
+                <div *ngIf="isInvalid('email')" class="text-danger">
+                    {{ getErrorMessage('email') }}
+                </div>
+            </div>
+          </div>
+          <div data-mdb-input-init class="form-outline mb-4">
+            <label for="email" class="col-sm-3 col-form-label">OTP:</label>
+            <div class="col-sm-9" id="inputfield" >
+            <input type="text" formControlName="otp" placeholder="6-digit OTP" class="form-control form-select-lg" maxlength="6">
+            <div *ngIf="isInvalid('otp')" class="text-danger">
+              {{ getErrorMessage('otp') }}
+          </div>
+        </div>
+          </div>
+          <button type="submit" class="btn btn-primary mx-1">Verify OTP</button>
+          <button type="button" class="btn btn-secondary" (click)="onResendOtp()">Resend OTP</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</section>

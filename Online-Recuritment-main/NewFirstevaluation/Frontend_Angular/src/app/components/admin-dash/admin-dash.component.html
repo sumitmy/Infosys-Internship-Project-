@@ -1,0 +1,54 @@
+
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-3 bg-custom-color sidebar">
+      <div class="sidebar-sticky">
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center text-1">
+          <span routerLink="/home">MENU</span>
+        </h6>
+
+
+        <ul class="nav flex-column">
+
+
+
+          <li class="nav-item" [class.active]="isActive('/admin-dash/graduates')">
+            <a class="nav-link" routerLink="/admin-dash/graduates">Graduates</a>
+          </li>
+          <li class="nav-item" [class.active]="isActive('/admin-dash/employers')">
+            <a class="nav-link" routerLink="/admin-dash/employers">Employers</a>
+          </li>
+          <li class="nav-item" [class.active]="isActive('/admin-dash/jobs')">
+            <a class="nav-link" routerLink="/admin-dash/jobs">Jobs</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main content -->
+
+<div class="col-md-9 ml-sm-auto col-lg-9 pt-3 px-4">
+  <!-- style=" background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); background-position: center;
+  background-attachment: fixed; width: 100%;
+  height: 100%" -->
+  <!-- Search bar -->
+  <div class="input-group mb-3 align-items-stretch">
+    <div class="input-group-append ml-auto align-items-stretch">
+      <span class="input-group-text align-items-stretch"> Welcome Admin !
+        <!-- Admin logo -->
+        <img src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png" alt="Admin Logo" class="admin-logo">
+      </span>
+    </div>
+  </div>
+
+  <!-- Main content for each section will be displayed here -->
+  <router-outlet></router-outlet>
+</div>
+</div>
+</div>
+
+

@@ -1,0 +1,191 @@
+package com.example.OnlineRecruitment.Entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.annotation.Generated;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+
+@Entity
+
+public class JobSeeker {
+
+
+
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	private String fullName;
+	
+	private String email;
+	
+	private String phone;
+	
+	private String yearOfPassing;
+	
+	private String cgpa;
+	
+	private String language;
+	
+	private String keySkill;
+	
+	private String areaOfInterest;
+	
+	private String project;
+	
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name="job")
+	private Job job;
+	
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+	@JoinColumn(name="graduate")
+	private Graduate graduate;
+
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	@JoinColumn(name="appointmentId")
+	private Appointment appointment;
+	
+	public JobSeeker() {
+		super();
+	}
+
+	public JobSeeker(Long id, String fullName, String email, String phone, String yearOfPassing, String cgpa,
+			String language, String keySkill, String areaOfInterest, String project, Job job, Graduate graduate,
+			Appointment appointment) {
+		super();
+		this.id = id;
+		this.fullName = fullName;
+		this.email = email;
+		this.phone = phone;
+		this.yearOfPassing = yearOfPassing;
+		this.cgpa = cgpa;
+		this.language = language;
+		this.keySkill = keySkill;
+		this.areaOfInterest = areaOfInterest;
+		this.project = project;
+		this.job = job;
+		this.graduate = graduate;
+		this.appointment = appointment;
+	}
+
+
+
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getYearOfPassing() {
+		return yearOfPassing;
+	}
+
+	public void setYearOfPassing(String yearOfPassing) {
+		this.yearOfPassing = yearOfPassing;
+	}
+
+	public String getCgpa() {
+		return cgpa;
+	}
+
+	public void setCgpa(String cgpa) {
+		this.cgpa = cgpa;
+	}
+
+	public String getKeySkill() {
+		return keySkill;
+	}
+
+	public void setKeySkill(String keySkill) {
+		this.keySkill = keySkill;
+	}
+
+	public String getAreaOfInterest() {
+		return areaOfInterest;
+	}
+
+	public void setAreaOfInterest(String areaOfInterest) {
+		this.areaOfInterest = areaOfInterest;
+	}
+
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
+	}
+
+	public Graduate getGraduate() {
+		return graduate;
+	}
+
+	public void setGraduate(Graduate graduate) {
+		this.graduate = graduate;
+	}
+
+	public Job getJob() {
+		return job;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
+	public Appointment getAppointment() {
+		return appointment;
+	}
+
+
+	public void setAppointment(Appointment appointment) {
+		this.appointment = appointment;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+}

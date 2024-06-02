@@ -1,0 +1,151 @@
+.container {
+  margin-top: 20px;
+}
+.container {
+  justify-content: center;
+  align-items: center;
+  background-color: #113f5f;
+  overflow: auto;
+  margin-top: 7%;
+}
+
+
+h2{
+  color: white;
+  margin-top: 10px;
+  text-align: center;
+}
+/* .card {
+  width: 18rem; 
+} */
+
+.card-body {
+  text-align: center;
+  background-color: blue;
+}
+
+.card {
+  margin: auto; 
+  margin-top: 50px; 
+  width: 120%;
+  background-color: #113f5f;
+  color: white;
+}
+
+.card-body {
+  padding: 10px; /* Add padding to the card body */
+}
+
+.table {
+  margin-top: 20px; /* Add some top margin to the table */
+}
+
+
+@media (max-width: 767.98px) {
+  .table-responsive td:nth-child(4),
+  .table-responsive th:nth-child(4),
+  .table-responsive td:nth-child(5),
+  .table-responsive th:nth-child(5) {
+    display: none;
+  }
+}
+/* graduates.component.css */
+
+/* The Modal (background) */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  width: 100%;
+  overflow: auto;
+  padding-right:10px;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width:900px;
+  margin: 0;
+  padding-left: 30px;
+  overflow: auto;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: 100%;
+  display:inline-block;
+  animation: fadeIn 0.3s;
+  position: relative;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Close Button */
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+}
+
+/* Modal Body */
+.modal-body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#inputfield{
+
+  /* outline: 2px; */
+}

@@ -1,0 +1,235 @@
+<section class="top-div">
+  <div class="container-fluid py-5">
+      <div class="row">
+          <div class="col-md-8">
+              <div id="formcard">
+                  <!-- Your appointment form content -->
+                  <h3 style="font-weight: bolder;">Appointment Scheduling Form</h3>
+                  <form [formGroup]="appointForm" (ngSubmit)="onSubmit()" novalidate>
+
+                      <!-- Full Name -->
+                      <div class="form-outline mb-2">
+                          <label for="name" class="col-sm-3 col-form-label">Name:</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="text" class="form-control form-select-lg" id="name" formControlName="name" placeholder="Full Name">
+                              <div *ngIf="isInvalid('name')" class="text-danger">
+                                  {{ getErrorMessage('name') }}
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Email -->
+                      <div class="form-outline mb-2">
+                          <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="email" class="form-control form-select-lg" id="email" formControlName="email" placeholder="Email">
+                              <div *ngIf="isInvalid('email')" class="text-danger">
+                                  {{ getErrorMessage('email') }}
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Phone Number-->
+                      <div class="form-outline mb-2">
+                          <label for="phone" class="col-sm-3 col-form-label">Phone No:</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="number" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone">
+                              <div *ngIf="isInvalid('phone')" class="text-danger">
+                                  {{ getErrorMessage('phone') }}
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Year of passing -->
+                      <div class="form-outline mb-2">
+                          <label for="yearofpassing" class="col-sm-3 col-form-label">Year Of Passing:</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="number" class="form-control form-select-lg" id="yearOfPassing" formControlName="yearOfPassing" placeholder="Year Of Passing">
+                              <div *ngIf="isInvalid('yearOfPassing')" class="text-danger">
+                                  {{ getErrorMessage('yearOfPassing') }}
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- CGPA -->
+                      <div class="form-outline mb-2">
+                        <label for="cgpa" class="col-sm-3 col-form-label">CGPA</label>
+                        <div class="col-sm-9" id="inputfield">
+                            <select id="cgpa" formControlName="cgpa" class="form-select form-select-lg" required>
+                                <option  value="" disabled selected>Select CGPA</option>
+                                <option value="value1">1 - 2</option>
+                                <option value="value2">2 - 3</option>
+                                <option value="value3">3 - 4</option>
+                                <option value="value4">4 - 5</option>
+                                <option value="value5">5 - 6</option>
+                                <option value="value6">6 - 7</option>
+                                <option value="value7">7 - 8</option>
+                                <option value="value8">8 - 9</option>
+                                <option value="value9">9 - 10</option>
+
+                            </select>
+                            <div *ngIf="isInvalid('cgpa')" class="text-danger">
+                                {{ getErrorMessage('cgpa') }}
+                            </div>
+                        </div>
+                      </div>
+
+
+
+
+                      <!-- Language -->
+                      <div class="form-outline mb-2">
+                          <label for="language" class="col-sm-3 col-form-label">Language:</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="text" class="form-control form-select-lg" id="language" formControlName="language" placeholder="Language">
+                              <div *ngIf="isInvalid('language')" class="text-danger">
+                                  {{ getErrorMessage('language') }}
+                              </div>
+                          </div>
+                      </div>
+
+
+
+                      <!-- Key Skill -->
+                      <div class="form-outline mb-2">
+                          <label for="keyskill" class="col-sm-3 col-form-label">Key Skill</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="text" class="form-control form-select-lg" id="keyskill" formControlName="keySkill" placeholder="Key Skill">
+                              <div *ngIf="isInvalid('keySkill')" class="text-danger">
+                                  {{ getErrorMessage('keySkill') }}
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Select Job -->
+                      <div class="form-outline mb-2">
+                          <label for="selectJob" class="col-sm-3 col-form-label">Select Job</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <select id="selectJob" formControlName="selectJob" class="form-select form-select-lg" required>
+                                  <option value="" disabled selected>Select Job</option>
+                                  <option value="graduate">Software Developer</option>
+                                  <option value="dataScientist">Data Scientist</option>
+                                  <option value="cybersecurityAnalyst">Cybersecurity Analyst</option>
+                                  <option value="ui-uxDesigner">UX/UI Designer</option>
+                                  <option value="cloud">Cloud Architect</option>
+                                  <option value="employerArchitect">IT Project Manager</option>
+                                  <option value="networkEngineer">Network Engineer</option>
+                                  <option value="systemsAdministrator">Systems Administrator</option>
+                                  <option value="aiEngineer">AI Engineer</option>
+                                  <option value="mlEngineer">ML Engineer</option>
+                                  <option value="devopsEngineer">DevOps Engineer</option>
+                              </select>
+                              <div *ngIf="isInvalid('selectJob')" class="text-danger">
+                                  {{ getErrorMessage('selectJob') }}
+                              </div>
+                          </div>
+                      </div>
+
+
+
+
+
+                      <!-- Appointment Slots -->
+                    <div class="form-outline mb-2">
+                          <label for="selectSlot" class="col-sm-3 col-form-label">Appointment Time</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <select id="selectSlot" formControlName="selectSlot" class="form-select form-select-lg" required>
+                                  <option value="" disabled selected>Select Slot</option>
+                                  <option value="slot1">10 am - 11 am</option>
+                                  <option value="slot2">11 am - 12 pm</option>
+                                  <option value="slot3">12 pm - 1 pm</option>
+                                  <option value="slot4">1 pm - 2 pm</option>
+                                  <option value="slot5">2 pm - 3 pm</option>
+                                  <option value="slot6">3 pm - 4 pm</option>
+                                  <option value="slot7">4 pm - 5 pm</option>
+                                  <option value="slot8">5 pm - 6 pm</option>
+                                  <option value="slot9">6 pm - 7 pm</option>
+
+                              </select>
+                              <div *ngIf="isInvalid('selectSlot')" class="text-danger">
+                                  {{ getErrorMessage('selectSlot') }}
+                              </div>
+                          </div>
+                      </div>
+
+
+
+
+                      <!-- Project -->
+                      <!-- <div class="form-outline mb-2">
+                          <label for="project" class="col-sm-3 col-form-label">Project</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <textarea rows="5" class="form-control form-select-lg" id="project" formControlName="project" placeholder="Project"></textarea>
+                              <div *ngIf="isInvalid('project')" class="text-danger">
+                                  {{ getErrorMessage('project') }}
+                              </div>
+                          </div>
+                      </div> -->
+
+                      <!-- Resume -->
+                      <div class="form-outline mb-2">
+                          <label for="resume" class="col-sm-3 col-form-label">Upload Your Resume:</label>
+                          <div class="col-sm-9" id="inputfield">
+                              <input type="file" class="form-control form-select-md" id="resume" formControlName="resume">
+                              <div *ngIf="isInvalid('resume')" class="text-danger">
+                                  {{ getErrorMessage('resume') }}
+                              </div>
+                          </div>
+                      </div>
+
+
+
+
+                      <div>
+                          <div>
+                              <button type="submit" class="btn btn-primary w-100">Submit</button>
+                          </div>
+                      </div>
+
+                  </form>
+
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div id="sidebar" style="color: azure;">
+                  <!-- Sponsor card and Wise card content -->
+                  <h1 class="h2 fw-bold mb-0 px-0 py-0 mb-4">Sponsors</h1>
+                  <ul type="none">
+                      <li>HCL Technology</li>
+                      <li> Over 6,000+ Premium Jobs</li>
+                      <hr>
+                      <li>Infosys</li>
+                      <li>Premium Jobs</li>
+                      <hr>
+                      <li>Wipro</li>
+                      <li>Premium Jobs</li>
+                      <hr>
+                      <li>Accenture</li>
+                      <li>Premium Jobs</li>
+                      <hr>
+
+                      <li>TCS</li>
+                      <li>Premium Jobs</li>
+                      <hr>
+
+                      <li>CTS</li>
+                      <li>Premium Jobs</li>
+                      <hr>
+                  </ul>
+
+                  <h1 class="h2 fw-bold mb-0 px-0 py-0 mb-4">Wise Words</h1>
+                  "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it."
+                  <br>
+                  <p align="right">-Steve Jobs</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<!--
+  
+  date
+  location
+ -->

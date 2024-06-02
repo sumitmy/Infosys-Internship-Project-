@@ -1,0 +1,115 @@
+
+
+
+/* .sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 210px;
+  margin-top: 50px;
+  padding-top: 20px;
+  z-index: 1000;
+
+}
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 56px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+} */
+
+/* .container-fluid {
+  padding-left: 220px;
+}
+
+.main-content {
+  margin-left: 220px;
+}
+ */
+
+ .sidebar {
+  position: fixed;
+  top: 56px; /* Adjust this value to match the height of your navbar */
+  bottom: 0;
+  left: 0;
+  width: 210px;
+  padding-top: 20px;
+  z-index: 1000;
+  justify-content: space-evenly;
+
+  ;
+
+  background-color: #343a40; /* Add a background color to match your design */
+  overflow-y: auto; /* Allow the sidebar to scroll if the content exceeds the viewport height */
+}
+
+.sidebar-sticky {
+  /* position: -webkit-sticky; */
+  position: sticky;
+  top: 56px; /* Adjust this value to match the height of your navbar */
+  height: calc(100vh - 56px);
+  padding-top: 0.5rem;
+  /* overflow-x: hidden;
+  overflow-y: auto; */
+}
+
+.container-fluid {
+  padding-left: 220px; /* Adjust based on sidebar width to prevent overlap */
+}
+
+.main-content {
+  margin-left: 220px; /* This should match the width of the sidebar */
+}
+
+
+
+
+.navbar {
+  background: linear-gradient(to right, #6a1b9a, #00b4d9);
+  color: white;
+  z-index: 1000;
+  position: fixed; /* Make the navbar fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.navbar-brand, .nav-link {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #ddd;
+}
+
+.nav-link.active {
+  color: #ffffff; /* Bright white color */
+  font-weight: bold; /* Bold text */
+}
+
+
+.bg-custom {
+  background-color: #113f5f;
+  border:  2px solid white;
+  border-radius: 2rem;
+}
+
+/* .sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: white;
+  color: #113f5f;
+  border-radius: 2rem;
+} */
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: white !important;
+  color: #113f5f !important;
+  border-radius: 2rem;
+  font-weight: 700;
+}

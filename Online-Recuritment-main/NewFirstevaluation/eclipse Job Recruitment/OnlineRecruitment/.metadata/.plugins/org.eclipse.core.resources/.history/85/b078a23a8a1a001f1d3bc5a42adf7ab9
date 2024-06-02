@@ -1,0 +1,113 @@
+package com.example.OnlineRecruitment.Services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import com.example.OnlineRecruitment.Entities.Appointment;
+import com.example.OnlineRecruitment.Entities.JobSeeker;
+import com.example.OnlineRecruitment.Repositories.JobRepository;
+import com.example.OnlineRecruitment.Repositories.JobSeekerRepository;
+@Service
+public class JobSeekerService {
+
+	@Autowired
+	private JobSeekerRepository jobSeekerRepository;
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
+	@Autowired
+	private EmployerService employerService;
+	
+	@Autowired
+	private JobService jobService;
+	
+
+	public String createJobSeeker(JobSeeker jobSeeker) {
+		String gradId = jobSeeker.getGraduate().getRoleId().getRoleId();
+		String jobId = jobSeeker.getJob().getJobId().toString();
+
+		Appointment appointment = new Appointment();
+		
+		String applicantId = gradId.concat(jobId);
+		
+		appointment.setApplicantId(applicantId);
+		
+		jobSeeker.setAppointment(appointment);
+		
+		jobSeekerRepository.save(jobSeeker);
+		
+		String roleStringId = jobService.getRoleIdbYjobId(jobSeeker.getJob().getJobId());
+		
+		List<JobSeeker> jobseeker2List = jobSeekerRepository.getAllJobseekerByemployeeId(roleStringId);
+		
+		if(jobseeker2List.size()==0) {
+			System.out.println("the empty jobSeeker"+jobseeker2List.size());
+		}
+		else {
+			JobSeeker jobseeker2 = jobseeker2List.get(0);
+			String employeeEmail = jobseeker2.getJob().getRoleId().getUser().getEmail();
+			System.out.println(employeeEmail);
+			//this is for the graduate
+			sendEmailtoGraduate(jobSeeker.getEmail(),jobseeker2,roleStringId);
+			// this is for the employer
+			sendEmailtoEmployer(employeeEmail,jobseeker2);
+		}
+		
+		
+		
+		return "created";
+	}
+	
+	private void sendEmailtoGraduate(String email,JobSeeker jobSeeker,String roleStringId) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        String text = "Your Application Id is :"+jobSeeker.getAppointment().getApplicantId()+"/n"
+        		+"Company Name:"+ employerService.getEmployerById(roleStringId).getCompanyName()+"/n"+
+        		"JobName:"+jobSeeker.getJob().getJobName()+"/n"+"Applicant Name:"+jobSeeker
+        		.getFullName()+"\n"+"Job Type:"+jobSeeker.getJob().getJobType()+"/n"+"email:"+jobSeeker.getEmail();
+        
+        message.setTo(email);
+        message.setSubject("Job Application Submitted");
+        message.setText(text);
+        javaMailSender.send(message);
+    }
+	
+	private void sendEmailtoEmployer(String email,JobSeeker jobSeeker) {
+		 SimpleMailMessage message = new SimpleMailMessage();
+		 String text = "The Application Id is :"+jobSeeker.getAppointment().getApplicantId()+
+				 "The Job Id :"+jobSeeker.getJob().getJobId()+"The Job Type:"+jobSeeker.getJob().getJobType()+
+				 "The Job Name:"+jobSeeker.getJob().getJobName()+"The Student Details \n"+"Name:"+
+				 jobSeeker.getFullName()+ "Phone:"+jobSeeker.getPhone()+"Email:"+jobSeeker.getEmail()+"CGPA:"+
+				 jobSeeker.getCgpa()+"Year Of Passing :"+jobSeeker.getYearOfPassing()+"KeySkills:"+jobSeeker.getKeySkill()+
+				 "Project:"+jobSeeker.getProject();
+		 	message.setTo(email);
+	        message.setSubject("Job Application Submitted");
+	        message.setText(text);
+	        javaMailSender.send(message);
+		 
+	}
+
+	public List<JobSeeker> getalljobseeker() {
+		// TODO Auto-generated method stub
+		return jobSeekerRepository.findAll();
+	}
+
+	public List<JobSeeker> getalljobseekerbyemployeeId(String employeeId) {
+		// TODO Auto-generated method stub
+		return jobSeekerRepository.getAllJobseekerByemployeeId(employeeId);
+	}
+
+	public List<JobSeeker> getAlljobsByStudentId(String studentId) {
+		// TODO Auto-generated method stub
+		return jobSeekerRepository.getAllJobSeekerByStudentId(studentId);
+	}
+	
+	
+	
+	
+	
+}

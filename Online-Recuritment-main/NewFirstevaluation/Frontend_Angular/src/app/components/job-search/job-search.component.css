@@ -1,0 +1,69 @@
+
+
+  .navbar {
+    background: linear-gradient(to right, #6a1b9a, #00b4d9);
+    color: white;
+  }
+
+  .navbar-brand, .nav-link {
+    color: white;
+  }
+
+  .navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+  }
+
+  .nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+  }
+
+  .background-section {
+    background-color: rgb(215, 226, 238);
+    padding-top: 5px; /* Adjust as needed */
+  }
+
+
+
+  .card {
+    text-align: center;
+    cursor: pointer;
+    height: 200px; /* Set a fixed height for the card */
+}
+
+.card img {
+    max-width: 80px; /* Adjust the maximum width as needed */
+    height: auto;
+    margin-bottom: 10px; /* Add margin below the image */
+}
+
+.card-body {
+    background-color: white; /* Default background color */
+    transition: background-color 0.3s ease; /* Add transition effect */
+    height: 100%; /* Occupy full height of the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+}
+
+.card:hover .card-body {
+    background-color: rgb(215, 226, 238); /* Change background color on hover */
+}
+
+.card-title {
+    font-size: 16px; /* Adjust the font size of the title */
+    margin: 5px 0; /* Add margin top and bottom */
+}
+
+.card-text {
+    font-size: 14px; /* Adjust the font size of the description */
+    margin: 0; /* Remove default margins */
+    overflow: hidden; /* Hide overflow content */
+}
+
+
+  .hover-effect {
+    background-color: white; /* Change background color on hover */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+

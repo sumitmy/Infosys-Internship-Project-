@@ -1,0 +1,27 @@
+.top-div {
+  margin: 0;
+  padding: 0;
+  background-color: #3c6a8b;
+  background-size: cover;
+  height: 100%;
+}
+
+#formcard {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  padding: 20px;
+}
+
+#sidebar {
+  position: relative;
+  height: 100%;
+}
+
+#sponsorcard, #wisecard {
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  padding: 20px;
+  margin-top: 20px;
+}

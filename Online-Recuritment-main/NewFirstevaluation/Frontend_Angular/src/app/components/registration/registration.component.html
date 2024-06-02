@@ -1,0 +1,294 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+          </li>
+
+
+
+
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <!-- <li class="nav-item" >
+            <a class="nav-link" routerLink="/gradhome" routerLinkActive="active">Jobs for you</a>
+          </li> -->
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/login"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link"  routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+
+<!-- <section class="vh-50"
+style="background-image: url('https://cdn.vectorstock.com/i/500p/73/98/dark-blue-gradient-abstract-background-vector-27317398.jpg');
+background-size: 1920px 1200px; background-repeat: no-repeat;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 2rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 60%; margin: auto;">
+
+          <div class="card-body p-4 p-lg-5 text-black">
+            <h2 class="h1 fw-bold mb-0">Registration Page</h2>
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+              <div class="form-outline mb-2">
+                <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg " id="name" formControlName="name" placeholder="Full Name">
+                                    <div *ngIf="isInvalid('fullName')" class="text-danger">
+                                        {{ getErrorMessage('fullName') }}
+                                    </div>
+                                </div>
+              </div>
+              <div class="form-outline mb-2">
+                <label for="address" class="col-sm-3 col-form-label">Address:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="textarea" class="form-control form-select-lg" id="address" formControlName="address" placeholder="Address">
+                                    <div *ngIf="isInvalid('address')" class="text-danger">
+                                        {{ getErrorMessage('address') }}
+                                    </div>
+                                </div>
+              </div>
+              <div class="form-outline mb-2">
+                <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="email" class="form-control form-select-lg" id="email" formControlName="email" placeholder="Email">
+                                    <div *ngIf="isInvalid('email')" class="text-danger">
+                                        {{ getErrorMessage('email') }}
+                                    </div>
+                                </div>
+              </div>
+
+              <div class="form-outline mb-2">
+                <label for="phone" class="col-sm-3 col-form-label">Phone:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="text" class="form-control form-select-lg" id="phone" formControlName="phone" placeholder="Phone Number">
+                                    <div *ngIf="isInvalid('phone')" class="text-danger">
+                                        {{ getErrorMessage('phone') }}
+                                    </div>
+                                </div>
+              </div>
+              <div class="form-outline mb-2">
+                <label for="password" class="col-sm-3 col-form-label" >Password:</label>
+                                <div class="col-sm-9" id="inputfield">
+                                    <input type="password" class="form-control form-select-lg" id="password" formControlName="password" placeholder="password">
+                                    <div *ngIf="isInvalid('password')" class="text-danger">
+                                        {{ getErrorMessage('password') }}
+                                    </div>
+
+                                </div>
+              </div>
+              <div class="form-outline mb-2">
+                <label for="confirmpassword" class="col-sm-3 col-form-label">Confirm Password:</label>
+                <div class="col-sm-9" id="inputfield">
+                  <input type="password" class="form-control form-select-lg" id="confirmpassword" formControlName="confirmpassword" placeholder="Re Enter Password">
+                  <div *ngIf="registrationForm && registrationForm.get('confirmpassword')?.invalid && (registrationForm.get('confirmpassword')?.dirty || registrationForm.get('confirmpassword')?.touched)" class="text-danger">
+                    {{ getErrorMessage('confirmpassword') }}
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="form-outline mb-2">
+                <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
+                <select id="nationality" formControlName="nationality" class="form-select form-select-lg" aria-placeholder="Select Nationality" required>
+                  <option value=""  disabled selected>Select Nationality</option>
+                  <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
+                </select>
+                <div *ngIf="isInvalid('nationality')" class="text-danger">
+                  {{ getErrorMessage('nationality') }}
+              </div>
+              </div>
+
+              <div class="form-outline mb-2">
+                <label for="signas" class="form-label" id="inputfield">Sign As:(Role)</label>
+                <select id="signas" formControlName="signas" class="form-select form-select-lg" aria-placeholder="signas" required>
+                  <option value=""  disabled selected>Select Role </option>
+                  <option value="graduate">Graduate</option>
+                  <option value="employer">Employer</option>
+                </select>
+                <div *ngIf="isInvalid('signas')" class="text-danger">
+                  {{ getErrorMessage('signas') }}
+              </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="inputfield" [disabled]="!registrationForm.valid">Register</button>
+              <p class="text-center mt-3">
+                Already a Member? <a routerLink="/login" style="color: #393f81;">Login</a>
+              </p>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
+<section class="regDiv" style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); ">
+  <!-- style="background-image: url('https://cdn.vectorstock.com/i/500p/73/98/dark-blue-gradient-abstract-background-vector-27317398.jpg'); background-size:1900px 1900px ; background-repeat: no-repeat;" -->
+  <div class="container py-5 h-50">
+    <!-- h-100 -->
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px);">
+          <div class="row g-0">
+
+            <!-- Image -->
+            <div class="col-md-9 col-lg-6 col-xl-5 d-flex justify-content-center align-items-center">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                   class="img-fluid" alt="Sample image" style="border-radius: 1rem;">
+            </div>
+
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <!-- Form Section -->
+                <h2 class="h1 fw-bold mb-0" style="color: rgb(5, 15, 60);">Registration Page</h2>
+                <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+                  <div class="form-outline mb-2">
+                    <label for="name" class="col-sm-3 col-form-label">Full Name:</label>
+                                    <div class="col-sm-9" id="inputfield">
+                                        <input type="text" class="form-control form-select-lg input-outline" id="name" formControlName="name" placeholder="Full Name">
+                                        <div *ngIf="isInvalid('name')" class="text-danger">
+                                            {{ getErrorMessage('name') }}
+                                        </div>
+                                    </div>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <label for="address" class="col-sm-3 col-form-label">Address:</label>
+                                    <div class="col-sm-9" id="inputfield">
+                                        <input type="textarea" class="form-control form-select-lg input-outline" id="address" formControlName="address" placeholder="Address">
+                                        <div *ngIf="isInvalid('address')" class="text-danger">
+                                            {{ getErrorMessage('address') }}
+                                        </div>
+                                    </div>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                    <div class="col-sm-9" id="inputfield">
+                                        <input type="email" class="form-control form-select-lg input-outline" id="email" formControlName="email" placeholder="Email">
+                                        <div *ngIf="isInvalid('email')" class="text-danger">
+                                            {{ getErrorMessage('email') }}
+                                        </div>
+                                    </div>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <label for="phone" class="col- col-form-label">Phone:</label>
+                                    <div class="col-sm-9" id="inputfield">
+                                        <input type="text" class="form-control form-select-lg input-outline" id="phone" formControlName="phone" placeholder="Phone Number">
+                                        <div *ngIf="isInvalid('phone')" class="text-danger">
+                                            {{ getErrorMessage('phone') }}
+                                        </div>
+                                    </div>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <label for="password" class="col-sm-3 col-form-label" >Password:</label>
+                                    <div class="col-sm-9" id="inputfield">
+                                        <input type="password" class="form-control form-select-lg input-outline" id="password" formControlName="password" placeholder="password">
+                                        <div *ngIf="isInvalid('password')" class="text-danger">
+                                            {{ getErrorMessage('password') }}
+                                        </div>
+
+                                    </div>
+                  </div>
+                  <div class="form-outline mb-2">
+                    <label for="confirmpassword" class="col-sm-3 col-form-label">Confirm Password:</label>
+                    <div class="col-sm-9" id="inputfield">
+                      <input type="password" class="form-control form-select-lg input-outline" id="confirmpassword" formControlName="confirmpassword" placeholder="Re Enter Password">
+                      <div *ngIf="registrationForm && registrationForm.get('confirmpassword')?.invalid && (registrationForm.get('confirmpassword')?.dirty || registrationForm.get('confirmpassword')?.touched)" class="text-danger">
+                        {{ getErrorMessage('confirmpassword') }}
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <div class="form-outline mb-2">
+                    <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
+                    <select id="nationality" formControlName="nationality" class="form-select form-select-lg input-outline" aria-placeholder="Select Nationality" required>
+                      <option value=""  disabled selected>Select Nationality</option>
+                      <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
+                    </select>
+                    <div *ngIf="isInvalid('nationality')" class="text-danger">
+                      {{ getErrorMessage('nationality') }}
+                  </div>
+                  </div>
+
+                  <div class="form-outline mb-2">
+                    <label for="signas" class="form-label" id="inputfield">Sign As:(Role)</label>
+                    <select id="signas" formControlName="signas" class="form-select form-select-lg input-outline" aria-placeholder="signas" required>
+                      <option value=""  disabled selected>Select Role </option>
+                      <option value="graduate">Graduate</option>
+                      <option value="employer">Employer</option>
+                    </select>
+                    <div *ngIf="isInvalid('signas')" class="text-danger">
+                      {{ getErrorMessage('signas') }}
+                  </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" id="inputfield" [disabled]="!registrationForm.valid">Register</button>
+                  <p class="text-center mt-3">
+                    Already a Member? <a routerLink="/login" style="color: #393f81;">Login</a>
+                  </p>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

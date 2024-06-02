@@ -1,0 +1,78 @@
+
+  
+  .job-listing.full-width {
+    width: 100%;
+  }
+  
+  .job-item {
+    color : rgb(18, 26, 99);
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .job-item h2 {
+    margin-top: 0;
+  }
+  
+  .job-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .job-item p {
+    margin-bottom: 10px;
+  }
+  
+  .job-item button {
+    margin-top: 10px;
+  }
+  
+  
+  .rounded-end {
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #sidebar {
+    position: relative;
+    height: 100%;
+  }
+  
+  #sponsorcard, #wisecard {
+  
+    border-radius: 2rem;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  
+  .job-div{
+    /* background-color: rgba(214, 215, 218,0.4); */
+    background-color: rgb(215, 226, 238);
+    padding-top: 50px;
+  }
+  
+  
+  
+  .rounded-start {
+    border-radius: 5px 5px 5px 5px;
+  }
+  
+  
+  .navbar {
+    background: linear-gradient(to right, #6a1b9a, #00b4d9);
+    color: white;
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+}
+
+.nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+}

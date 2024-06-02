@@ -1,0 +1,107 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <!--  -->
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <!-- <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a> -->
+      <a class="navbar-brand d-flex align-items-center mx-auto" routerLink="/home">
+        <!-- <img src="assets/images/ors-logo.png" alt="RecruitHub Logo" style="height: 30px; margin-right: 10px;">
+        <img src="./images/ors-logo.png" alt="RecruitHub Logo" style="height: 30px; margin-right: 10px;"> -->
+      </a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+          </li>
+
+          <a class="nav-link"  (click)="post()" routerLinkActive="active">Post Jobs</a>
+
+
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" (click)=jobsforyou() routerLinkActive="active">Jobs for you</a>
+          </li>
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+
+
+          <li class="nav-item" >
+            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/login"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')"  routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+
+          <li>
+            <a class="nav-link" *ngIf="!roleIdString.startsWith('EMP')" routerLink="/admin" routerLinkActive="active">Admin</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+      <a class="nav-link" *ngIf="roleIdString.startsWith('EMP')" routerLink="/home" >Logout</a>
+    </div>
+  </nav>
+</div>
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-2 bg-custom sidebar">
+      <div class="sidebar-sticky">
+        <h5 class="text-white text-center py-3">Appointment Menu</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/emp-home-page/{{roleIdString}}/scheduled/{{roleIdString}}">Scheduled</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" routerLink="/emp-home-page/{{roleIdString}}/not-scheduled/{{roleIdString}}">Not Scheduled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main content -->
+   
+      <router-outlet></router-outlet>
+   
+ 
+</div>

@@ -1,0 +1,72 @@
+.button-group .btn {
+    margin-right: 20px; 
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    top: 0;
+  }
+  
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-image: url('https://eskyoc.com/recruit.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+  }
+  
+  
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+  }
+  
+  
+  
+  
+  .animated-text {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .navbar {
+    background: linear-gradient(to right, #6a1b9a, #00b4d9);
+    color: white;
+}
+
+.navbar-brand, .nav-link {
+    color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+    color: #ddd;
+}
+
+.nav-link.active {
+    color: #ffffff; /* Bright white color */
+    font-weight: bold; /* Bold text */
+}

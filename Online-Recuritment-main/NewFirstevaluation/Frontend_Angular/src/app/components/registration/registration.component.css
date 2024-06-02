@@ -1,0 +1,45 @@
+#inputfield{
+    width: 100%;
+    /* outline: 2px; */
+}
+
+.input-outline{
+  border: 1px solid #050e17; /* Change the color as needed */
+  border-radius: 0.25rem;
+}
+.reg-div
+{
+    /* background-image: url('./regImage/reg.png');
+    min-height: 100vh;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative; */
+    background-color: rgb(90, 174, 180);
+}
+
+/* .form-div{
+  background-color: bisque;
+} */
+
+.regDiv{
+  background-color: rgb(146, 171, 198);
+}
+
+.navbar {
+  background: linear-gradient(to right, #6a1b9a, #00b4d9);
+  color: white;
+}
+
+.navbar-brand, .nav-link {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-link:hover {
+  color: #ddd;
+}
+
+.nav-link.active {
+  color: #ffffff; /* Bright white color */
+  font-weight: bold; /* Bold text */
+}

@@ -1,0 +1,244 @@
+<!-- <div>
+  <h2>Graduates</h2>
+  <button (click)="createGraduate()">Add Graduate</button>
+  <table> -->
+    <!-- Table Header -->
+    <!-- <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr> -->
+    <!-- Table Rows -->
+    <!-- <tr *ngFor="let graduate of graduates">
+      <td>{{ graduate.name }}</td>
+      <td>{{ graduate.email }}</td>
+      <td>
+        <button (click)="editGraduate(graduate)">Edit</button>
+        <button (click)="deleteGraduate(graduate.id)">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div> -->
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Graduates Information</h2>
+    <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <!-- Table Header -->
+        <thead class="thead-dark">
+          <tr>
+            <th>Grad ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+          <!-- Table Rows -->
+          <tr *ngFor="let graduate of graduates">
+            <td>{{ graduate.roleId.roleId}}</td>
+            <td>{{ graduate?.user?.name}}</td>
+            <td>{{ graduate?.user?.email}}</td>
+            <td>{{graduate?.user?.address}}</td>
+            <td>{{graduate?.user?.phone}}</td>
+            <td>
+              <button class="btn btn-info btn-sm mx-2"(click)="infoGradute(graduate)" > More Details</button>
+              <button class="btn btn-success btn-sm mx-2" (click)="editGraduate(graduate)">Edit</button>
+              <button class="btn btn-danger btn-sm " (click)="deleteGraduate(graduate.roleId.roleId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Simple Modal -->
+<div class="modal" *ngIf="selectedGraduate">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title">Graduate Details</h5>
+        <button type="button" class="btn btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Grad ID:</strong> {{ selectedGraduate.roleId.roleId }}</p>
+        <p><strong>Name:</strong> {{ selectedGraduate.user?.name }}</p>
+        <p><strong>Email:</strong> {{ selectedGraduate.user.email }}</p>
+        <p><strong>Address:</strong> {{ selectedGraduate.user.address }}</p>
+        <p><strong>Phone:</strong> {{ selectedGraduate.user.phone }}</p>
+        <p><strong>Nationality:</strong> {{ selectedGraduate.user.nationality }}</p>
+        <p><strong>City:</strong> {{ selectedGraduate.city }}</p>
+        <p><strong>State:</strong> {{ selectedGraduate.state }}</p>
+        <p><strong>PinCode:</strong> {{ selectedGraduate.pinCode }}</p>
+        <p><strong>YearOfPassing:</strong> {{ selectedGraduate.yearOfPassing}}</p>
+        <p><strong>Cgpa:</strong> {{ selectedGraduate.cgpa }}</p>
+        <p><strong>College Name :</strong> {{selectedGraduate.college.collegeName}}</p>
+        <p><strong>College Description :</strong> {{selectedGraduate.college.collegeDescription}}</p>
+        <p><strong>College Address :</strong> {{selectedGraduate.college.collegeAddress}}</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIt Modal -->
+<div class="modal w-100" *ngIf="selectedGraduateforedit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Graduate Details</h5>
+      </div>
+      <div class="modal-body" >
+        <form class="row" [formGroup]="graduateForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="roleId" class="col-form-label">Grad ID</label>
+              <div>
+              <input type="text" class="form-control" id="inputfield" value="{{selectedGraduateforedit.roleId.roleId}}" disabled>
+            </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="name" class="col-form-label">Name</label>
+              <input id="name" type="text" class="form-control" formControlName="name" id="inputfield" placeholder="Name">
+              <div *ngIf="isInvalid('name')" class="text-danger">
+                {{ getErrorMessage('name') }}
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
+                <select id="nationality" formControlName="nationality" class="form-select" aria-placeholder="Select Nationality" required>
+                  <option value=""  disabled selected>Select Nationality</option>
+                  <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
+                </select>
+                <div *ngIf="isInvalid('nationality')" class="text-danger">
+                  {{ getErrorMessage('nationality') }}
+                  </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phone" class="col-form-label">Phone</label>
+              <input id="phone" type="text" class="form-control" formControlName="phone" id="inputfield" placeholder="Phone">
+              <div *ngIf="isInvalid('phone')" class="text-danger">
+                {{ getErrorMessage('phone') }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="address" class="col-form-label">Address</label>
+              <input id="address" type="textarea" class="form-control " formControlName="address" placeholder="Address">
+              <div *ngIf="isInvalid('address')" class="text-danger">
+                {{ getErrorMessage('address') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              
+              <label for="city" class="col-form-label">City</label>
+              <input id="city" type="text" class="form-control" formControlName="city" placeholder="City">
+              <div *ngIf="isInvalid('city')" class="text-danger">
+                {{ getErrorMessage('city') }}
+              </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            
+            <div class="form-group col-md-6">
+              <label for="state" class="col-form-label">State</label>
+              <input id="state" type="text" class="form-control" formControlName="state" placeholder="State">
+              <div *ngIf="isInvalid('state')" class="text-danger">
+                {{ getErrorMessage('state') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="pinCode" class="col-form-label">Pin Code</label>
+              <input id="pinCode" type="text" class="form-control" formControlName="pinCode" placeholder="PinCode">
+              <div *ngIf="isInvalid('pinCode')" class="text-danger">
+                {{ getErrorMessage('pinCode') }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="cgpa" class="col-form-label">CGPA</label>
+              <input id="cgpa" type="text" class="form-control" formControlName="cgpa" placeholder="Cgpa">
+              <div *ngIf="isInvalid('cgpa')" class="text-danger">
+                {{ getErrorMessage('cgpa') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="yearOfPassing" class="col-form-label">Year of Passing</label>
+              <input id="yearOfPassing" type="text" class="form-control" formControlName="yearOfPassing" placeholder="Year Of Passing">
+              <div *ngIf="isInvalid('yearOfPassing')" class="text-danger">
+                {{ getErrorMessage('yearOfPassing') }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            
+            <div class="form-group col-md-6">
+              <label for="collegeName" class="col-form-label">College Name</label>
+              <input id="collegeName" type="text" class="form-control" formControlName="collegeName" placeholder="CollegeName">
+              <div *ngIf="isInvalid('collegeName')" class="text-danger">
+                {{ getErrorMessage('collegeName') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="collegeAddress" class="col-form-label">College Address</label>
+              <input id="collegeAddress" type="text" class="form-control" formControlName="collegeAddress" placeholder="College Address">
+              <div *ngIf="isInvalid('collegeAddress')" class="text-danger">
+                {{ getErrorMessage('collegeAddress') }}
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="collegeDescription" class="col-form-label">College Description</label>
+              <textarea id="collegeDescription" row="3" class="form-control" formControlName="collegeDescription" placeholder="College Description" ></textarea>
+              <div *ngIf="isInvalid('collegeDescription')" class="text-danger">
+                {{ getErrorMessage('collegeDescription') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              
+            </div>
+          </div>
+          <div class="row">
+          <button type="submit" class="btn btn-primary mt-2 mb-2 col-6">Update</button>
+          <button class="btn btn-danger mt-2 mb-2 col-6"(click)="closeModalforEdit()">Close</button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" *ngIf="selectedGraduatefordelete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModalforDelete()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="deleteGraduatebyrole()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

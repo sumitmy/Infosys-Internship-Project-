@@ -1,0 +1,101 @@
+<div style="position: static;">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+      <div class="container-fluid">
+        <!-- Centered brand -->
+        <a class="navbar-brand mx-auto" routerLink="/home">Online Recruitment System</a>
+
+        <!-- Toggler button for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+            <!-- Home -->
+            <!-- *ngIf="currentRoute !== '/home'" -->
+            <li class="nav-item" >
+              <a class="nav-link" *ngIf="roleIdString?.startsWith('GRAD')" routerLink="/gradhome/{{roleIdString}}" routerLinkActive="active">Home</a>
+              <a class="nav-link" *ngIf="roleIdString?.startsWith('EMP')" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+            </li>
+
+
+
+
+
+            <!-- Services -->
+            <!-- *ngIf="currentRoute !== '/job-search'" -->
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+            </li>
+
+
+            <!-- Blog  -->
+            <!-- *ngIf="currentRoute !== '/job-search'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+            </li>
+
+
+            <!-- About Us -->
+            <!-- *ngIf="currentRoute !== '/login'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+            </li>
+
+            <li class="nav-item" >
+              <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
+            </li>
+
+            <li>
+              <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
+            </li>
+          </ul>
+
+          <!-- Green dot for logged-in status -->
+          <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+        </div>
+        <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLink="/home" >Logout</a>
+      </div>
+    </nav>
+  </div>
+<div class="main">
+    <h1 class="text-center">Available Jobs</h1>
+
+        <div class=" d-flex flex-row-reverse">
+        <div class="col-0 mx-2">
+            <button class="btn btn-success" type="button" (click)="search()" >Search</button>
+        </div>
+        <div class="col-4">
+        <input type="text" class="form-control" id="search" placeholder="Search" [(ngModel)]="searchValue">
+        </div>
+
+        </div>
+        <div class="col-12 align-items-center align-text-center">
+        <table class="mt-2">
+            <tr>
+                <th>Company Name:</th>
+                <th>Job Name:</th>
+                <th>Job Vacancy:</th>
+                <th>Job Type:</th>
+                <th>Salary:</th>
+                <th>Company Address:</th>
+                <th>Apply:</th>
+            </tr>
+            <tr *ngFor="let job of jobs">
+            <td>{{job.companyName}}</td>
+            <td>{{job.jobName}}</td>
+            <td>{{job.jobVacancy}}</td>
+            <td>{{job.jobType}}</td>
+            <td>{{job.jobSalary}}</td>
+            <td>{{job.companyAddress}}</td>
+            <td><button (click)="Apply(job.jobId)" >Apply Now</button></td>
+            </tr>
+        </table>
+
+
+
+
+
+</div>

@@ -1,0 +1,213 @@
+
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Employers Information</h2>
+    <!-- <button class="btn btn-primary" (click)="createGraduate()">Add Graduate</button> -->
+    <table class="table">
+      <!-- Table Header -->
+      <thead>
+        <tr>
+          <th>EMP ID</th>
+          <th>Company</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Nationality</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+        <!-- Table Rows -->
+        <tr *ngFor="let employer of employers">
+
+          <td>{{ employer.roleId.roleId}}</td>
+          <td>{{employer.companyName}}</td>
+          <td>{{ employer.user.name }}</td>
+          <td>{{ employer.user.email }}</td>
+          <td>{{employer.user.phone}}</td>
+          <td>{{employer.user.nationality}}</td>
+          <td>
+            <button class="btn btn-info btn-sm mx-2" (click)="infoEmployer(employer)"> More Details</button>
+            <button class="btn btn-success btn-sm mx-2" (click)="editEmployer(employer)">Edit</button>
+            <button class="btn btn-danger btn-sm " (click)="deleteEmployer(employer.roleId.roleId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Simple Modal -->
+<div class="modal" *ngIf="selectedEmployer">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title">Employer Details</h5>
+        <button type="button" class="btn btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Grad ID:</strong> {{ selectedEmployer.roleId.roleId }}</p>
+        <p><strong>Name:</strong> {{ selectedEmployer.user.name }}</p>
+        <p><strong>Email:</strong> {{ selectedEmployer.user.email }}</p>
+        <p><strong>Address:</strong> {{ selectedEmployer.user.address }}</p>
+        <p><strong>Phone:</strong> {{ selectedEmployer.user.phone }}</p>
+        <p><strong>Nationality:</strong> {{ selectedEmployer.user.nationality }}</p>
+        <p><strong>Company Name:</strong> {{selectedEmployer.companyName}}</p>
+        <p><strong>Company Type:</strong> {{selectedEmployer.companyType}}</p>
+        <p><strong>Company Size:</strong> {{selectedEmployer.companySize}}</p>
+        <p><strong>Company Address:</strong> {{selectedEmployer.companyAddress}}</p>
+        <p><strong>Company Description:</strong> {{selectedEmployer.companyDescription}}</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- EDIt Modal -->
+<div class="modal w-100" *ngIf="selectedEmployerforedit">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Employer Details</h5>
+      </div>
+      <div class="modal-body" >
+        <form class="row" [formGroup]="EmployerForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="roleId" class="col-form-label">Grad ID</label>
+              <div>
+              <input type="text" class="form-control" id="inputfield" value="{{selectedEmployerforedit.roleId.roleId}}" disabled>
+            </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="name" class="col-form-label">Name</label>
+              <input id="name" type="text" class="form-control" formControlName="name" id="inputfield" placeholder="Name">
+              <div *ngIf="isInvalid('name')" class="text-danger">
+                {{ getErrorMessage('name') }}
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="nationality" class="form-label" id="inputfield">Nationality:</label>
+                <select id="nationality" formControlName="nationality" class="form-select" aria-placeholder="Select Nationality" required>
+                  <option value=""  disabled selected>Select Nationality</option>
+                  <option *ngFor="let nationality of nationalities" [value]="nationality">{{nationality}}</option>
+                </select>
+                <div *ngIf="isInvalid('nationality')" class="text-danger">
+                  {{ getErrorMessage('nationality') }}
+                  </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phone" class="col-form-label">Phone</label>
+              <input id="phone" type="text" class="form-control" formControlName="phone" id="inputfield" placeholder="Phone">
+              <div *ngIf="isInvalid('phone')" class="text-danger">
+                {{ getErrorMessage('phone') }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="address" class="col-form-label">Address</label>
+              <input id="address" type="textarea" class="form-control " formControlName="address" placeholder="Address">
+              <div *ngIf="isInvalid('address')" class="text-danger">
+                {{ getErrorMessage('address') }}
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              
+              <label for="roleInCompany" class="col-sm- col-form-label ">Role:</label>
+                  <input type="text" class="form-control" id="roleInCompany" formControlName="roleInCompany" placeholder="Your Role In Company">
+                  <div *ngIf="isInvalid('roleInCompany')" class="text-danger">
+                      {{ getErrorMessage('roleInCompany') }}
+                  </div>
+            </div>
+            
+          </div>
+          <div class="row">
+            
+            <div class="form-group col-md-6">
+              <label for="companyName" class="col-sm- col-form-label ">Company Name:</label>
+                 
+                   <input type="text" class="form-control " id="companyName" formControlName="companyName" placeholder="Enter Company Name">
+                  <div *ngIf="isInvalid('companyName')" class="text-danger">
+                 {{ getErrorMessage('companyName') }}
+            </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="companyType" class="col-sm- col-form-label " >Company Type:</label>
+                               
+                <input type="text" class="form-control " id="companyType" formControlName="companyType" placeholder="Enter Company Type">
+                 <div *ngIf="isInvalid('companyType')" class="text-danger">
+                  {{ getErrorMessage('companyType') }}
+                    </div>
+                            
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="companySize" class="col-sm col-form-label ">Company Size:</label>
+                
+                  <input type="number" class="form-control " id="companySize" formControlName="companySize" placeholder="Enter Company Size">
+                  <div *ngIf="isInvalid('companySize')" class="text-danger">
+                    {{ getErrorMessage('companySize') }}
+                </div>
+                      
+            </div>
+            <div class="form-group col-md-6">
+              <label for="companyAddress" class="col-sm- col-form-label " >Company Address:</label>
+                               
+              <input type="text" class="form-control" id="companyAddress" formControlName="companyAddress" placeholder="Enter Company Address">
+               <div *ngIf="isInvalid('companyAddress')" class="text-danger">
+                 {{ getErrorMessage('companyAddress') }}
+                </div>
+
+            </div>
+          </div>
+          <div class="row">
+            
+            <div class="form-group col-md-12">
+              <label for="companyDescription" class="col-sm- col-form-label ">Company Description:</label>
+               <textarea rows="3" cols="33" class="form-control" id="companyDescription" formControlName="companyDescription" placeholder="Enter Company Description"></textarea>
+                <div *ngIf="isInvalid('companyDescription')" class="text-danger">
+               {{ getErrorMessage('companyDescription') }}
+               </div>
+            </div>
+            
+          </div>
+          <div class="row">
+          <button type="submit" class="btn btn-primary mt-2 mb-2 col-6">Update</button>
+          <button class="btn btn-danger mt-2 mb-2 col-6"(click)="closeModalforEdit()">Close</button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" *ngIf="selectedEmployerfordelete">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this item?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModalforDelete()">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="deleteEmployerByrole()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

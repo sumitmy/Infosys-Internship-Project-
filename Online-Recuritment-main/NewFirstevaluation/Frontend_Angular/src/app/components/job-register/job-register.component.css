@@ -1,0 +1,60 @@
+
+
+
+/* .top-div {
+  padding: 2px;
+} */
+
+.background {
+  background-image: url('https://wallpapers.com/images/hd/minimalist-aesthetic-actuary-work-laptop-wtvol12uoktgz31i.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
+}
+
+.card {
+  margin-top: 18px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  /* margin-top: 50px;  */
+  margin-left: 2px;
+  margin-right: 50px;
+}
+
+.card-body {
+  padding: 30px;
+  background-color: rgba(81, 81, 86, 0.3);
+  color: #113f5f;
+  backdrop-filter: blur(10px);
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+h3 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-outline {
+  margin-bottom: 15px;
+}
+
+#inputfield input,
+#inputfield textarea,
+#inputfield select {
+  width: 100%;
+}
+
+.btn {
+  background-color: #113f5f;
+  color: white;
+}
+
+
+.input-outline{
+  border: 1px solid #050e17; /* Change the color as needed */
+  border-radius: 0.25rem;
+  font-weight: 600;
+}

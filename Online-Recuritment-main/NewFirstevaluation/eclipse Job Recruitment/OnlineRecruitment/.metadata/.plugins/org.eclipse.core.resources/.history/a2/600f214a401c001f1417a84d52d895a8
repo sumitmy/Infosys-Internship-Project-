@@ -1,0 +1,40 @@
+package com.example.OnlineRecruitment.Services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+
+import com.example.OnlineRecruitment.Entities.Appointment;
+import com.example.OnlineRecruitment.Repositories.AppointmentRepository;
+
+public class AppointmentService {
+	
+	@Autowired
+	private AppointmentRepository appointmentRepository;
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
+
+	public void saveAppointment(String applicantId, Appointment appointment) {
+		// TODO Auto-generated method stub
+		Appointment appoint = appointmentRepository.getById(applicantId);
+		appoint.setDate(appointment.getDate());
+		appoint.setLocation(appointment.getLocation());
+		appointmentRepository.save(appoint);
+		String email = appoint.getJobSeeker().getEmail();
+		String JobName = appoint.getJobSeeker().getJob().getJobName();
+		String JobDescription = appoint.getJobSeeker().getJob().getJobDescription();
+		sendEmail(email,applicantId,appointment.getLocation(),jobName,JobDescription);
+		
+	}
+	
+	 private void sendEmail(String email, String applicantId,String location,String jobName,
+			 String jobDescription) {
+	        SimpleMailMessage message = new SimpleMailMessage();
+	        message.setTo(email);
+	        message.setSubject("Appointment Schedule And Location");
+	        message.setText("Your OTP for verification is: " + otp);
+	        javaMailSender.send(message);
+	    }
+	    
+}

@@ -1,0 +1,5 @@
+package com.example.OnlineRecruitment.Services;
+
+public class AppointmentService {
+
+}

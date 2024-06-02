@@ -1,0 +1,157 @@
+<div style="position: static;">
+  <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+    <div class="container-fluid">
+      <!-- Centered brand -->
+      <img src="" alt="">
+      <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
+
+      <!-- Toggler button for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+          <!-- Home -->
+          <!-- *ngIf="currentRoute !== '/home'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/home/{{roleIdString}}" routerLinkActive="active">Home</a>
+          </li>
+
+
+
+
+          <!-- Search Jobs -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <!-- <li class="nav-item" >
+            <a class="nav-link" routerLink="/gradhome" routerLinkActive="active">Jobs for you</a>
+          </li> -->
+
+
+          <!-- Services -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+          </li>
+
+
+          <!-- Blog  -->
+          <!-- *ngIf="currentRoute !== '/job-search'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+          </li>
+
+
+          <!-- About Us -->
+          <!-- *ngIf="currentRoute !== '/login'" -->
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+          </li>
+
+          <li class="nav-item" >
+            <a class="nav-link" routerLink="/login"  routerLinkActive="active">Login</a>
+          </li>
+
+          <li>
+            <a class="nav-link"  routerLink="/register"  routerLinkActive="active">Register</a>
+          </li>
+        </ul>
+
+        <!-- Green dot for logged-in status -->
+        <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+      </div>
+
+    </div>
+  </nav>
+</div>
+
+<section class="log-div" style="background-image: url('https://e0.pxfuel.com/wallpapers/12/182/desktop-wallpaper-business-best-business-and-on-chat-corporate-meeting.jpg'); background-size: cover; background-repeat: no-repeat; backdrop-filter: blur(5px); ">
+
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card  mx-auto" style="border-radius: 1rem; background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(10px); width: 80%; ">
+          <div class="row g-0">
+
+            <!-- Image -->
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+              alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
+            </div>
+
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                <!-- Form Section -->
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    <span class="h2 fw-bold mb-0" style="color: rgb(5, 15, 60);">LOG IN</span>
+                  </div>
+
+                  <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Login into your account</h5> -->
+
+                  <div data-mdb-input-init class="form-outline mb-4"  style="color : black;">
+                    <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                    <div class="col-sm-9" id="inputfield">
+                        <input type="email" class="form-control form-select-lg input-outline" id="email" formControlName="email" placeholder="Email">
+                        <div *ngIf="isInvalid('email')" class="text-danger">
+                            {{ getErrorMessage('email') }}
+                        </div>
+                    </div>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4" style="color : black;">
+                    <label for="password" class="col-sm-3 col-form-label " >Password:</label>
+                    <div class="col-sm-9" id="inputfield">
+                        <input type="password" class="form-control form-select-lg input-outline" id="password" formControlName="password" placeholder="Password">
+                        <div *ngIf="isInvalid('password')" class="text-danger">
+                            {{ getErrorMessage('password') }}
+                        </div>
+
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4" style="color : black;">
+                    <label for="idName" class="col-sm-3 col-form-label" >Role Id:</label>
+                    <div class="row">
+                    <div class="col-3">
+                      <select class="form-select input-outline" id="idName" id="drop" formControlName="idName" placeholder="Select">
+                        <option value="EMP" selected>EMP</option>
+                        <option value="GRAD">GRAD</option>
+                      </select>
+
+                      </div>
+                      <div class="col-3 mx-3">
+                      <input type="text" class="form-control col-sm-3 w-20 input-outline" formControlName="roleId" name="roleId" id="roleId" placeholder="Enter the ID">
+                    </div>
+                    </div>
+                    <div *ngIf="isInvalid('roleId')" class="text-danger">
+                      {{ getErrorMessage('roleId') }}
+                    </div>
+                    <div *ngIf="isInvalid('idName')" class="text-danger">
+                      {{ getErrorMessage('idName') }}
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="pt-1 mb-4" style="color : white;">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary w-50" type="submit" [disabled]="loginForm.invalid">Login</button>
+                  </div>
+
+                  <a class="" routerLink="/forgotpassword" style="color : rgb(14, 1, 1); font-weight:600; text-decoration:none;">Forgot password?</a>
+                  <p class="mb-5 pb-lg-2"style="color: rgb(5, 15, 60);" style="color : rgb(7, 0, 0);">Don't have an account? <a routerLink="/register" style="color: rgb(5, 15, 60); color : rgb(14, 1, 1); text-decoration : none; font-weight:600;">Register here</a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

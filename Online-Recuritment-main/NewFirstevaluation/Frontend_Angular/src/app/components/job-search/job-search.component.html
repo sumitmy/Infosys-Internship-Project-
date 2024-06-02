@@ -1,0 +1,105 @@
+<div style="position: static;">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background : #113f5f;">
+      <div class="container-fluid">
+        <!-- Centered brand -->
+        <a class="navbar-brand mx-auto" routerLink="/home">RecruitHub</a>
+
+        <!-- Toggler button for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto"> <!-- Centering the list -->
+            <!-- Home -->
+            <!-- *ngIf="currentRoute !== '/home'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/gradhome/{{roleIdString}}" routerLinkActive="active">Home</a>
+            </li>
+
+
+
+
+
+            <!-- Services -->
+            <!-- *ngIf="currentRoute !== '/job-search'" -->
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/services" routerLinkActive="active">Services</a>
+            </li>
+
+
+            <!-- Blog  -->
+            <!-- *ngIf="currentRoute !== '/job-search'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blogs</a>
+            </li>
+
+
+            <!-- About Us -->
+            <!-- *ngIf="currentRoute !== '/login'" -->
+            <li class="nav-item" >
+              <a class="nav-link" routerLink="/aboutUs" routerLinkActive="active">About Us</a>
+            </li>
+
+            <li class="nav-item" >
+              <a class="nav-link"  *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLinkActive="active">Login</a>
+            </li>
+
+            <li>
+              <a class="nav-link" *ngIf="!(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))" routerLink="/register"  routerLinkActive="active">Register</a>
+            </li>
+          </ul>
+
+          <!-- Green dot for logged-in status -->
+          <!-- <span *ngIf="isLoggedIn" class="green-dot"></span> -->
+        </div>
+        <a class="nav-link" *ngIf="(roleIdString?.startsWith('GRAD') || roleIdString?.startsWith('EMP'))"  routerLink="/home" >Logout</a>
+      </div>
+    </nav>
+  </div>
+
+
+<section class="background-section" >
+
+    <div class="container">
+      <h1 class="my-4 text-center" style="color: #113f5f; font-weight:700;">Find your dream job now
+        <p class="my-2 lead" style="font-size: 15px; color: #113f5f; font-weight : 500;">Your journey to a better job starts here.</p>
+      </h1>
+
+      <div class="row mb-3">
+          <div class="col">
+              <input type="text" class="form-control" placeholder="Enter skills/designations" [(ngModel)]="searchTerm">
+          </div>
+
+          <div class="col-auto">
+              <button class="btn btn-primary" (click)="search()" >Search</button>
+          </div>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="d-flex flex-wrap mb-4">
+          <button type="button" class="btn btn-outline-secondary m-2" style="color: #050101;" *ngFor="let filter of filters">{{ filter }}</button>
+      </div>
+
+      <!-- Companies section -->
+      <div class="mb-5">
+          <h2 class="my-4 text-center" style="color: #113f5f;">Top companies hiring now</h2>
+          <div class="row row-cols-5">
+              <div class="col" *ngFor="let company of companies">
+                <div class="card mb-3" (click)="openLink(company.link)">
+                  <div class="card-body" [ngClass]="{'hover-effect': company.name === 'Infosys'}">
+                    <div class="d-flex justify-content-center">
+                        <img [src]="company.logo" [alt]="company.logo" class="me-2" style="width: auto; height: 100%;">
+                    </div>
+                          <h5 class="card-title text-center">{{ company.name }}</h5>
+                          <p class="card-text text-center">{{ company.description }}</p>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>

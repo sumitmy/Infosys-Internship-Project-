@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="card bg-light">
+    <div class="card-body">
+      <h2 class="text-black bg-navy p-2 mb-4">Applied Job List</h2>
+
+      <div class="row">
+        <div class="col-md-1"><strong>Job ID:</strong></div>
+        <div class="col-md-1"><strong>Name:</strong></div>
+        <div class="col-md-1"><strong>Email:</strong></div>
+        <!-- <div class="col-md-1"><strong>Phone:</strong></div> -->
+        <div class="col-md-1"><strong>Year of Passing:</strong></div>
+        <!-- <div class="col-md-1"><strong>CGPA:</strong></div> -->
+        <!-- <div class="col-md-1"><strong>Language:</strong></div> -->
+        <div class="col-md-1"><strong>Key Skill:</strong></div>
+        <!-- <div class="col-md-1"><strong>Areas of Interest:</strong></div> -->
+        <!-- <div class="col-md-1"><strong>Project:</strong></div> -->
+        <div class="col-md-1"><strong>Resume:</strong></div>
+        <div class="col-md-1"><strong>Appointment Time:</strong></div>
+        <div class="col-md-1"><strong>Appointment Date:</strong></div>
+      </div>
+
+      <div class="row" *ngFor="let candidate of candidates" style="border-bottom: 1px solid #ccc; padding: 10px;">
+        <div class="col-md-1">{{ candidate.jobId }}</div>
+        <div class="col-md-1">{{ candidate.name }}</div>
+        <div class="col-md-1">{{ candidate.email }}</div>
+        <!-- <div class="col-md-1">{{ candidate.phone }}</div> -->
+        <div class="col-md-1">{{ candidate.yearOfPassing }}</div>
+        <!-- <div class="col-md-1">{{ candidate.cgpa }}</div> -->
+        <!-- <div class="col-md-1">{{ candidate.language }}</div> -->
+        <div class="col-md-1">{{ candidate.keySkill }}</div>
+        <!-- <div class="col-md-1">{{ candidate.areasOfInterest }}</div> -->
+        <!-- <div class="col-md-1">{{ candidate.project }}</div> -->
+        <div class="col-md-1">{{ candidate.resume }}</div>
+        <div class="col-md-1">{{ candidate.appointmentTime }}</div>
+        <div class="col-md-1">{{ candidate.appointmentDate }}</div>
+      </div>
+    </div>
+  </div>
+</div>

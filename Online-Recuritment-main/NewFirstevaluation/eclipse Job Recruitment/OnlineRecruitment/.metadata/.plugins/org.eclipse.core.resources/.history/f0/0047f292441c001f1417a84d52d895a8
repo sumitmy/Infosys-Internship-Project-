@@ -1,0 +1,18 @@
+package com.example.OnlineRecruitment.Repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.OnlineRecruitment.Entities.Appointment;
+
+@Repository
+public interface AppointmentRepository extends JpaRepository<Appointment, String> {
+
+	@Query("SELECT a FROM Appointment a WHERE a.isSet = false")
+	List<Appointment> getAllAppointmentNotSet();
+	@Query("SELECT a FROM Appointment a WHERE a.isSet = true")
+	List<Appointment> getAllAppointmentSet();
+}
